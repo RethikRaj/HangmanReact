@@ -1,7 +1,10 @@
-import Button from "./components/Button/Button";
+import TextInputFormContainer from "./components/TextInputForm/TextInputFormContainer";
 
 const App = ()=>{
-  return <Button text={"heelo"} onClickHandler={()=>{alert("HIIII")}} styleType={"danger"}/>;
+    return <TextInputFormContainer onSubmitHandler={(value) => {
+        console.log("Value from App component:", value);
+      }
+    }/>
 }
 
 export default App
