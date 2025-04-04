@@ -5,10 +5,10 @@ const TextInput = ({inputType="text", label, value, onChangeHandler,inputRef}) =
         <input 
             type={inputType} 
             value={value} 
-            placeholder={`Enter your ${label}`} 
+            placeholder={`Enter a ${label}`} 
             onChange={onChangeHandler} 
             ref={inputRef}
-            className="px-4 py-2 border border-gray-500 rounded-md w-full"
+            className="px-4 py-2 border-2 border-black rounded-md w-full"
         />
     </div>
   )

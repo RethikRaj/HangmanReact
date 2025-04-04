@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import TextInputForm from "./TextInputForm";
 
-const TextInputFormContainer = ({onSubmitHandler}) => {
+const TextInputFormContainer = ({onSubmitHandler,label}) => {
     const inputRef = useRef(null);
     const [inputType, setInputType] = useState("password");
 
@@ -15,7 +15,7 @@ const TextInputFormContainer = ({onSubmitHandler}) => {
     };
 
     return (
-        <TextInputForm handleFormSubmit={handleFormSubmit} inputRef={inputRef} inputType={inputType} setInputType={setInputType}/>
+        <TextInputForm handleFormSubmit={handleFormSubmit} inputRef={inputRef} inputType={inputType} setInputType={setInputType} label={label}/>
     )
 }
 
