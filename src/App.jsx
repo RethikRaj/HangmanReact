@@ -1,10 +1,9 @@
-import TextInputFormContainer from "./components/TextInputForm/TextInputFormContainer";
+import Routing from "./components/Routing/Routing";
 
 const App = ()=>{
-    return <TextInputFormContainer onSubmitHandler={(value) => {
-        console.log("Value from App component:", value);
-      }
-    }/>
+    return <>
+      <Routing/>
+    </>
 }
 
 export default App
