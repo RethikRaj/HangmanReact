@@ -1,14 +1,9 @@
-const VirtualKeyBoard = ({secretWord, guessedLetters,onLetterClick}) => {
-    const letters = new Array(26).fill(null).map((e,i)=>String.fromCharCode(i+65));
-    const guessedLettersSet = new Set(guessedLetters);
+import getVirtualButtonStyle from "./getVirtualButtonStyle";
 
-    const buttonStyle = (letter)=>{
-        if(guessedLettersSet.has(letter)){
-            return "bg-red-500 text-gray-800 font-semibold py-2 px-4 rounded-lg shadow hover:bg-red-700 transition m-2 cursor-not-allowed";
-        }else{
-            return "bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-lg shadow hover:bg-gray-700 transition m-2 cursor-pointer";
-        }
-    }
+const VirtualKeyBoard = ({secretWord, usedLetters,onLetterClick}) => {
+    const letters = new Array(26).fill(null).map((e,i)=>String.fromCharCode(i+65));
+    const usedLettersSet = new Set(usedLetters.join("").toUpperCase().split(""));
+    const secretWordSet = new Set(secretWord.toUpperCase().split(""));
 
     const handleButtonClick = (event)=>{
         const character = event.target.value;
@@ -20,10 +15,10 @@ const VirtualKeyBoard = ({secretWord, guessedLetters,onLetterClick}) => {
             {letters.map((letter)=>{
                 return <button 
                     key={letter} 
-                    className={buttonStyle(letter)} 
+                    className={getVirtualButtonStyle(letter,usedLettersSet,secretWordSet)} 
                     onClick={handleButtonClick} 
                     value={letter}
-                    disabled={guessedLettersSet.has(letter)}
+                    disabled={usedLettersSet.has(letter)}
                 >
                     {letter}
                 </button>;

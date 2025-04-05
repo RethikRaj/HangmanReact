@@ -20,7 +20,7 @@ const PlayPage = () => {
         <div className="flex flex-col items-center justify-center">
             <MaskedInput secretWord={secretWord} usedLetters={usedLetters}/>
 
-            <VirtualKeyBoard secretWord={secretWord} guessedLetters={usedLetters} onLetterClick={handleLetterClick}/>
+            <VirtualKeyBoard secretWord={secretWord} usedLetters={usedLetters} onLetterClick={handleLetterClick}/>
 
         </div>
     )
