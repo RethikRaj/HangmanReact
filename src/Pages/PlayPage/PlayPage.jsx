@@ -22,14 +22,17 @@ const PlayPage = () => {
 
 
     return (
-        <div className="flex flex-col items-center justify-center">
-            <MaskedInput secretWord={secretWord} usedLetters={usedLetters}/>
+        <div className="flex justify-center gap-10">
+            <div className="flex flex-col items-center justify-center">
+                <MaskedInput secretWord={secretWord} usedLetters={usedLetters}/>
 
-            <VirtualKeyBoard secretWord={secretWord} usedLetters={usedLetters} onLetterClick={handleLetterClick}/>
-            
-            <Hangman chance={chance}/>
-
+                <VirtualKeyBoard secretWord={secretWord} usedLetters={usedLetters} onLetterClick={handleLetterClick}/>
+            </div>
+            <div>
+                <Hangman chance={chance}/>
+            </div>
         </div>
+        
     )
 }
 
