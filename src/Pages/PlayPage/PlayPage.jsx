@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom"
+import MaskedInput from "../../components/MaskedInput/MaskedInput";
 
 const PlayPage = () => {
     const location = useLocation();
@@ -6,7 +7,8 @@ const PlayPage = () => {
 
     return (
         <div>
-            {secretWord ? secretWord :" No secret word provided"}
+            <MaskedInput secretWord={secretWord} guessedLetters={["b","e"]}/>
+
         </div>
     )
 }
