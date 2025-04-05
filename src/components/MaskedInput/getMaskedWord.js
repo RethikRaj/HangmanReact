@@ -1,10 +1,10 @@
-export const getMaskedWord = (secretWord,guessedLetters)=>{
+export const getMaskedWord = (secretWord, usedLetters)=>{
     secretWord = secretWord.toUpperCase();
-    guessedLetters = guessedLetters.join("").toUpperCase().split("");
-    const guessedLettersSet = new Set(guessedLetters);
+    usedLetters = usedLetters.join("").toUpperCase().split("");
+    const usedLettersSet = new Set(usedLetters);
 
     const maskedWord = secretWord.split("").reduce((acc,curr)=>{
-        return acc + (guessedLettersSet.has(curr) ? curr+" " : "_ ");
+        return acc + (usedLettersSet.has(curr) ? curr+" " : "_ ");
     },"");
 
     return maskedWord;

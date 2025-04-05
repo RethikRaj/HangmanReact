@@ -1,8 +1,8 @@
 import { getMaskedWord } from "./getMaskedWord";
 
-const MaskedInput = ({secretWord, guessedLetters}) => {
+const MaskedInput = ({secretWord, usedLetters}) => {
         
-    const maskedWord = getMaskedWord(secretWord,guessedLetters);
+    const maskedWord = getMaskedWord(secretWord, usedLetters);
 
     return (
         <div>
