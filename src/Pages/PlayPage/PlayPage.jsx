@@ -7,20 +7,20 @@ const PlayPage = () => {
     const location = useLocation();
     const secretWord = location.state?.secretWord;
 
-    const [guessedLetters, setGuessedLetters] = useState([]);
+    const [usedLetters, setUsedLetters] = useState([]);
 
     const handleLetterClick = (character)=>{
-        const updatedGuessedLetters = [...guessedLetters,character]
-        setGuessedLetters(updatedGuessedLetters);
+        const updatedGuessedLetters = [...usedLetters,character]
+        setUsedLetters(updatedGuessedLetters);
         console.log(updatedGuessedLetters);
     }
 
 
     return (
         <div className="flex flex-col items-center justify-center">
-            <MaskedInput secretWord={secretWord} guessedLetters={guessedLetters}/>
+            <MaskedInput secretWord={secretWord} usedLetters={usedLetters}/>
 
-            <VirtualKeyBoard secretWord={secretWord} guessedLetters={guessedLetters} onLetterClick={handleLetterClick}/>
+            <VirtualKeyBoard secretWord={secretWord} guessedLetters={usedLetters} onLetterClick={handleLetterClick}/>
 
         </div>
     )
