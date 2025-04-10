@@ -1,24 +1,35 @@
 import { useLocation } from "react-router-dom"
 import MaskedInput from "../../components/MaskedInput/MaskedInput";
 import VirtualKeyBoard from "../../components/VirtualKeyboard/VirtualKeyBoard";
-import { useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Hangman from "../../components/Hangman/Hangman";
 
 const PlayPage = () => {
     const location = useLocation();
     const secretWord = location.state?.secretWord;
-    const secretWordSet = new Set(secretWord.toUpperCase().split(""));
+    const secretWordSet = useMemo(() => new Set(secretWord.toUpperCase().split("")), [secretWord]);
 
     const [usedLetters, setUsedLetters] = useState([]);
     const [chance, setChance] = useState(0);
+    const [correctLetters, setCorrectLetters] = useState([]);
 
     const handleLetterClick = (character)=>{
         if(!secretWordSet.has(character)){
             setChance((chance)=>chance+1);
+        }else{
+            setCorrectLetters((correctLetters)=>[...correctLetters,character]);
         }
-        const updatedusedLetters = [...usedLetters,character]
-        setUsedLetters(updatedusedLetters);
+        setUsedLetters((usedLetters)=>[...usedLetters,character]);
     }
+
+    useEffect(()=>{
+        if(chance === 7){
+            alert("You lost!");
+        }else if(secretWordSet.size === correctLetters.length){
+            alert("You won!");
+        }
+
+    },[correctLetters, chance, secretWordSet]);
 
 
     return (
