@@ -4,17 +4,17 @@ import TextInputFormContainer from "../../components/TextInputForm/TextInputForm
 const StartPage = () => {
     const navigate = useNavigate();
 
-    const onSubmitHandler = (inputValue) => {
-        if(inputValue.length < 3){
+    const onSubmitHandler = (inputWordValue, inputHintValue) => {
+        if(inputWordValue.length < 3){
             alert("Please enter a word or phrase with at least 3 characters.");
             return;
         }
-        navigate("/play",{state:{ secretWord: inputValue }});
+        navigate("/play",{state:{ secretWord: inputWordValue , hint : inputHintValue}});
     }
 
     return (
         <div className="flex justify-center h-screen">
-            <TextInputFormContainer label={"Word Or Phrase"} onSubmitHandler={onSubmitHandler}/>
+            <TextInputFormContainer onSubmitHandler={onSubmitHandler}/>
         </div>
     )
 }

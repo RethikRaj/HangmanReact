@@ -7,6 +7,7 @@ import Hangman from "../../components/Hangman/Hangman";
 const PlayPage = () => {
     const location = useLocation();
     const secretWord = location.state?.secretWord;
+    const hint = location.state?.hint;
     const secretWordSet = useMemo(() => new Set(secretWord.toUpperCase().split("")), [secretWord]);
 
     const [usedLetters, setUsedLetters] = useState([]);
@@ -33,16 +34,22 @@ const PlayPage = () => {
 
 
     return (
-        <div className="flex justify-center gap-10">
-            <div className="flex flex-col items-center justify-center">
-                <MaskedInput secretWord={secretWord} usedLetters={usedLetters}/>
-
-                <VirtualKeyBoard secretWord={secretWord} usedLetters={usedLetters} onLetterClick={handleLetterClick}/>
-            </div>
+        <div className="flex flex-col items-center mt-5">
             <div>
-                <Hangman chance={chance}/>
+                <h1 className="font-bold text-5xl">Hint : {hint}</h1>
+            </div>
+            <div className="flex justify-center gap-10 mt-10">
+                <div className="flex flex-col items-center justify-center">
+                    <MaskedInput secretWord={secretWord} usedLetters={usedLetters}/>
+
+                    <VirtualKeyBoard secretWord={secretWord} usedLetters={usedLetters} onLetterClick={handleLetterClick}/>
+                </div>
+                <div>
+                    <Hangman chance={chance}/>
+                </div>
             </div>
         </div>
+        
         
     )
 }

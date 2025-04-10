@@ -1,12 +1,13 @@
 import Button from "../Button/Button";
 import TextInput from "../TextInput/TextInput";
 
-const TextInputForm = ({handleFormSubmit,  inputRef, inputType,setInputType,label}) => {
+const TextInputForm = ({handleFormSubmit,  inputWordRef, inputHintRef,inputType,setInputType}) => {
 
     return (
         <form className="m-2 w-full" onSubmit={handleFormSubmit}>
             <div className="">
-                <TextInput inputType={inputType} label={label} inputRef={inputRef}/>
+                <TextInput inputType={inputType} label={"Word or Phrase"} inputRef={inputWordRef}/>
+                <TextInput inputType={inputType} label={"Hint"} inputRef={inputHintRef}/>
             </div>
             <div className="flex mt-2 gap-2">
                 <Button text={"Submit"} styleType={"primary"} buttonType="submit"/>

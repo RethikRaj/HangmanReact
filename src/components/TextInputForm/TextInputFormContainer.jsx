@@ -3,19 +3,20 @@
 import { useRef, useState } from "react";
 import TextInputForm from "./TextInputForm";
 
-const TextInputFormContainer = ({onSubmitHandler,label}) => {
-    const inputRef = useRef(null);
+const TextInputFormContainer = ({onSubmitHandler}) => {
+    const inputWordRef = useRef(null);
+    const inputHintRef = useRef(null);
     const [inputType, setInputType] = useState("password");
 
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        console.log("Form submitted with value:", inputRef.current.value);
-        onSubmitHandler?.(inputRef.current.value); // Call the parent handler if provided
+        console.log("Form submitted with value:", inputWordRef.current.value , inputHintRef.current.value);
+        onSubmitHandler?.(inputWordRef.current.value, inputHintRef.current.value); // Call the parent handler if provided
     };
 
     return (
-        <TextInputForm handleFormSubmit={handleFormSubmit} inputRef={inputRef} inputType={inputType} setInputType={setInputType} label={label}/>
+        <TextInputForm handleFormSubmit={handleFormSubmit} inputWordRef={inputWordRef} inputHintRef={inputHintRef} inputType={inputType} setInputType={setInputType} />
     )
 }
 
